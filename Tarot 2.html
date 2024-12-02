@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot 2</title>
+    <link rel="stylesheet" href="assets/Estilos.CSS">
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<!-- Pantalla 1 con el título y botón -->
+<div class="start-container" id="startContainer">
+    <h1>¿Sobre qué tema deseas consultar?</h1>
+    <button class="start-button" onclick="startTarot('amor')">Amor</button>
+    <button class="start-button" onclick="startTarot('dinero')">Dinero</button>
+    <button class="start-button" onclick="startTarot('futuro')">Familia</button>
+</div>
+
+<!-- Pantalla 2: Carrusel de cartas -->
+<div class="carousel-container" id="carouselContainer">
+    <div id="cardContainer">
+        <h2>Selecciona 3 cartas</h2>
+        <!-- Las cartas se generarán aquí dinámicamente -->
+    </div>
+</div>
+<!-- Pantalla 3: Resultados -->
+<div class="result-container" id="resultContainer">
+    <div class="result-panel">
+        <div class="selected-cards" id="selectedCardsContainer"></div>
+        <h3 class="title">Elegiste las siguientes cartas</h3>
+        <div class="card-names" id="selectedCardNames"></div> <!-- Contenedor para los nombres de las cartas -->
+        <h3 class="subtitle">Esto dice tu futuro</h3>
+        <div class="description" id="descriptions"></div>
+    </div>
+    <button class="boton-habla" onclick="startmensajeria()">Habla con el maestro</button>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    particlesJS('particles-js', {
+        "particles": {
+            "number": {"value": 80, "density": {"enable": true, "value_area": 800}},
+            "color": {"value": "#ffffff"},
+            "shape": {"type": "circle", "polygon": {"nb_sides": 5}},
+            "opacity": {"value": 0.5},
+            "size": {"value": 3, "random": true},
+            "line_linked": {"enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1},
+            "move": {"enable": true, "speed": 6, "direction": "none"}
+        },
+        "interactivity": {"detect_on": "canvas", "events": {"onhover": {"enable": true, "mode": "repulse"}}}
+    });
+</script>
+<script src="assets/Funcionalidad.js"></script>
+</body>
+</html>
