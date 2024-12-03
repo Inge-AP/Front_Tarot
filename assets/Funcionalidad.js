@@ -682,6 +682,7 @@ function displayResult() {
     // Mostrar una descripción aleatoria de cada carta seleccionada en una sola línea
     const descriptions = document.getElementById("descriptions");
     descriptions.innerHTML = ""; // Limpiar contenedor de la descripción
+    document.createElement
     // Función para seleccionar una descripción aleatoria y evitar elementos vacíos
     let descriptionsText = selectedCards
       .map((card) => {
