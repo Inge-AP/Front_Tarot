@@ -202,8 +202,8 @@ h3 {
 }
 
 .selected-card {
-    width: 120px; 
-    height: 200px; 
+    width: 80px; 
+    height: 130px; 
     background-color: #ffffff; /* Color blanco para las cartas seleccionadas */
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -213,13 +213,14 @@ h3 {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s;
     opacity: 0; /* Inicialmente invisibles */
-
+    transform: scale(0.8);
 }
 
 
 .selected-card.flip {
     transform: rotateY(180deg); /* Rotación para revelar la carta */
     opacity: 1; /* Hacer visible la carta al girar */
+ /*    margin-left: -20px */
 }
 @media screen and (max-width: 450px) {
     .selected-card.flip{

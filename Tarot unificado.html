@@ -31,7 +31,7 @@
         <div class="selected-cards" id="selectedCardsContainer"></div>
         <h3 class="title">Elegiste las siguientes cartas</h3>
         <div class="card-names" id="selectedCardNames"></div> <!-- Contenedor para los nombres de las cartas -->
-        <h3 class="subtitle">Esto dice tu futuro</h3>
+        <h3 class="subtitle">Esto dice tu tirada</h3>
         <div class="description" id="descriptions"></div>
     </div>
     <button class="boton-habla" onclick="nuevaPantalla()">Habla con el maestro</button>
@@ -49,7 +49,7 @@
 <div class="form-container" id="phoneContainer">
     <h4>¿Cuál es tu número de teléfono?</h4>
     
-    <!-- Desplegable de país -->
+    <!-- Desplegable de país -->    
     <select id="countryCode" class="country-select" >
         <option value="">Seleccione su país</option>
         <option value="+57">Colombia (+57)</option>
@@ -65,6 +65,7 @@
     <button class="start-mensajeria" onclick="submitPhone()">Enviar</button>
     
     <!-- Mensaje de error (oculto inicialmente) -->
+    <div class="error-message" id="numErrorMessage">Por favor, escribe un número de telefono valido.</div>
     <div class="error-message" id="errorMessage">Por favor, selecciona un indicativo.</div>
 </div>
 
