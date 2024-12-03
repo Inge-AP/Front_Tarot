@@ -1,0 +1,422 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("../Cartas/IMAGEN-ORIGEN-scaled-1.webp");
+    background-size: cover;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    background-size: cover; /* Para cubrir toda la pantalla */
+    background-repeat: no-repeat; /* Evitar que la imagen se repita */
+    background-attachment: fixed; /* Mantener la imagen fija en la pantalla */
+    background-position: center; /* Centrar la imagen de fondo */
+}
+
+h1 {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 60px;
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(255, 215, 0, 0.6);
+}
+
+h2 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    margin-top: 40px;
+    font-size: 60px;
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(255, 215, 0, 0.6);
+}
+
+h3 {
+    /* Remover la posición absoluta */
+    position: relative; /* O simplemente eliminar esta línea */
+    /* Asegurar que el título esté debajo de las cartas */
+    margin-top: 20px; /* Ajusta el espacio que desees */
+    text-align: center;
+    font-size: 60px;
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(255, 215, 0, 0.6);
+}
+
+.start-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.start-button {
+    padding: 15px 30px;
+    font-size: 20px;
+    color: white;
+    background: linear-gradient(135deg, #e2ac3d, #ffc552);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+    transition: all 0.3s ease;
+    margin: 10px 0;
+    width: 200px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.start-button:hover {
+    background: linear-gradient(135deg, #ffd700, #e2ac3d);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+#cardContainer {
+    display: none;
+    position: relative;
+    top: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.card {
+    width: 120px; 
+    height: 200px; 
+    background-image: url("../Cartas/card-back.webp");
+    transform: scaleX(-1);
+    background-size: cover;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    position: absolute;
+    transform-origin: bottom center;
+    transition: transform 0.3s;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-weight: bold;
+    opacity: 0; 
+}
+
+.card:hover {
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 15px rgba(255, 215, 0, 0.6);
+    transform: translateY(-5px) scale(1.05);
+}
+
+.selected {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 1), 0 0 10px rgba(255, 215, 0, 0.9);
+    transform: scale(1.1);
+}
+
+#cardContainer.show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* Estilos para la pantalla 3 */
+.result-container {
+    display: none;
+    text-align: center;
+    color: #ffffff; /* Color del texto de la interpretación */
+}
+
+.result-panel {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 80px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: #333;
+}
+
+.result-panel .title {
+    color: #e2ac3d;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    position: relative;
+    top: -60px;
+}
+
+.result-panel .card-names {
+    position: relative;
+    top: -50px;
+}
+
+.result-panel .subtitle {
+    color: #e2ac3d;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    top: -40px;
+}
+
+.result-panel .description {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    top: -30px;
+}
+
+
+.selected-cards {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.selected-card {
+    width: 120px; 
+    height: 200px; 
+    background-color: #ffffff; /* Color blanco para las cartas seleccionadas */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 0 6px; /* Espacio entre cartas */
+    position: relative;
+    top: -60px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s;
+    opacity: 0; /* Inicialmente invisibles */
+
+}
+
+
+.selected-card.flip {
+    transform: rotateY(180deg); /* Rotación para revelar la carta */
+    opacity: 1; /* Hacer visible la carta al girar */
+}
+@media screen and (max-width: 450px) {
+    .selected-card.flip{
+        width: 100px;
+        position: relative;
+    }
+    .card{
+        background-size: cover;
+    }
+}
+.boton-habla {
+    padding: 15px 40px; /* Ajuste leve en el relleno para mantener proporción */
+    font-size: 20px;
+    color: white;
+    background: linear-gradient(135deg, #e2ac3d, #ffc552);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+    transition: all 0.3s ease;
+    margin: 1%;
+    width: 300px; /* Ancho ampliado */
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    margin-top: -50px;
+}
+
+
+.boton-habla:hover {
+    background: linear-gradient(135deg, #ffd700, #e2ac3d);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+.result-container {
+    display: none; /* Oculto por defecto */
+    max-height: 90vh; /* Limita la altura al 80% del alto de la pantalla */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    padding: 20px;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    overflow: hidden;
+    color: #ffffff;
+    background-image: url("../Cartas/IMAGEN-ORIGEN-scaled-1.webp"); /* Reemplaza con la URL de tu imagen */
+    background-size: cover; /* Para cubrir toda la pantalla */
+    background-repeat: no-repeat; /* Evitar que la imagen se repita */
+    background-attachment: fixed; /* Mantener la imagen fija en la pantalla */
+    background-position: center; /* Centrar la imagen de fondo */
+}
+
+/* Estado inicial para el efecto de entrada */
+#formContainer {
+    opacity: 0;
+    transform: translateY(400px);
+    transition: transform 2s ease, opacity 0.8s ease;
+}
+
+/* Clase que se activa para la animación de entrada */
+#formContainer.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+h4 {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 60px;
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(255, 215, 0, 0.6);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.form-container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.start-mensajeria {
+    padding: 15px 30px;
+    font-size: 20px;
+    color: white;
+    background: linear-gradient(135deg, #e2ac3d, #ffc552);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+    transition: all 0.3s ease;
+    margin: 10px 0;
+    width: 200px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.start-mensajeria:hover {
+    background: linear-gradient(135deg, #ffd700, #e2ac3d);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+.name-input, .phone-input {
+    padding: 10px;
+    font-size: 20px;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 200px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.country-select {
+    padding: 10px;
+    font-size: 20px;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 210px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.thank-you-message {
+    display: none;
+    text-align: center;
+    font-size: 25px;
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(255, 215, 0, 0.6);
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+    border-radius: 10px; /* Bordes redondeados */
+    width: 80%;
+    max-width: 400px;
+    position: absolute; /* Para centrar verticalmente */
+    top: 50%; /* Centro vertical */
+    left: 50%; /* Centro horizontal */
+    transform: translate(-50%, -50%); /* Mover al centro exacto */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.thank-you-message.show {
+    display: block; /* Muestra el mensaje */
+    opacity: 1;
+}
+
+
+/* Este es el de la pantalla 2*/
+.error-message { 
+    text-align: center;
+    font-size: 20px;
+    color: rgb(255, 255, 255); /* Color blanco para el mensaje de error */
+    margin-top: 10px;
+    display: none;
+}
+
+.error-message.show {
+    display: block; /* Muestra el mensaje de error */
+}
+
+.name-ErrorMessage {
+    text-align: center;
+    font-size: 20px;
+    color: rgb(255, 255, 255); /* Color blanco para el mensaje de error */
+    margin-top: 10px;
+    display: none !important;
+}
+
+.name-ErrorMessage.show {
+    display: block !important; /* Muestra el mensaje de error */
+}
