@@ -813,6 +813,7 @@ function submitPhone() {
       document.getElementById("thankYouMessage").classList.add("show"); // Añadir clase para la animación
     }, 500); // Esperar 500ms para que la animación de ocultar se complete
   } else {
+    
     alert("Por favor, ingresa tu número de teléfono.");
   }
   /* const API = HttpService.getInstance(); */
